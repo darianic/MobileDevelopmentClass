@@ -3,9 +3,9 @@
 
 Just do this...
 
-gcc mob1.c -o mob
+gcc mob1.c -o mob1
 
-./mob
+./mob1
 
 data.csv must be in the same directory as the code
 
