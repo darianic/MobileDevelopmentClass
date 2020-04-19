@@ -9,9 +9,9 @@ void Telephony(double call_in, double call_out) {
   //k - множитель тарифного плана
 int price_call_in = 1;
 int price_call_out = 1;
-int x = call_in*price_call_in + call_out*price_call_out;
+float x = call_in*price_call_in + call_out*price_call_out;
 
-printf("Итоговая стоимость всех звонков абонента с номером 911926375: %d\n", x);
+printf("Итоговая стоимость всех звонков абонента с номером 911926375: %f\n", x);
 
 }
 
@@ -39,7 +39,7 @@ int main() {
 
   int origin_out, dest_out, sms = 0;
   int origin_in, dest_in;
-  double call_out = 0, call_in = 0;
+  float call_out = 0, call_in = 0;
 
   while (fgets(str,100,f1)) {
          //puts(str);
