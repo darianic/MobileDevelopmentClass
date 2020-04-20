@@ -60,11 +60,9 @@ int main() {
             if (istr1 != NULL || istr2 != NULL) {
               if (istr3 != NULL) {
                 bytes = bytes + atof(m[11])/i*1048576;
-                num = i;
               }
               else {
                 bytes = bytes + atoi(m[11])/i;
-                num = i;
               }
             }
         }
