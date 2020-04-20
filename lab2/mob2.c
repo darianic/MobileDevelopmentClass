@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-void Internet(int bytes) {
+void Internet(float bytes) {
   //X = Q * k
   //Q - общий объем трафика NetFlow за отчетный период
   //k - множитель тарифного плана, k = 0,5руб/Мб
@@ -25,8 +25,9 @@ int main() {
 
   char str[300];
 
-  int bytes = 0;
+  float bytes = 0;
   int num = 0; //Number of words in a string
+  char * hi;
 
   while (fgets(str,300,f1)) {
          //puts(str);
@@ -42,20 +43,30 @@ int main() {
           int j=0;
           char *istr1;
           char *istr2;
+          char *istr3;
 
           for (int j=0; j<i; j++) {
 
             char * value1 = m[5];
             char * value2 = m[7];
+            char * value3 = m[12];
 
             char * str = "17.248.150.51";
+            char * str1 = "M";
 
             istr1 = strstr(value1,str);
             istr2 = strstr(value2,str);
+            istr3 = strstr(value3,str1);
 
             if (istr1 != NULL || istr2 != NULL) {
-              bytes = bytes + atoi(m[11]);
-              num = i;
+              if (istr3 != NULL) {
+                bytes = bytes + atof(m[11])*1048576;
+                num = i;
+              }
+              else {
+                bytes = bytes + atoi(m[11]);
+                num = i;
+              }
             }
         }
 
@@ -71,14 +82,17 @@ int main() {
             t=strtok(NULL,":.");
           }
 
-          fprintf(f2,"%d%d %d\n", chisla[0], chisla[1], atoi(m[11]));
+          if (istr3 != NULL)
+            fprintf(f2,"%d%d %f\n", chisla[0], chisla[1], atof(m[11])*1048576);
+          else
+            fprintf(f2,"%d%d %d\n", chisla[0], chisla[1], atoi(m[11]));
         }
   }
     fclose(f1);
     fprintf(f2,"e\n");
     fclose(f2);
     bytes = bytes/num;
-    printf("Всего байтов: %d", bytes);
+    printf("Всего байтов: %.0f\n", bytes);
     printf("\n");
 
     Internet(bytes);
