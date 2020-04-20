@@ -43,6 +43,7 @@ int main() {
           int j=0;
           char *istr1;
           char *istr2;
+          char *istr3;
 
           for (int j=0; j<i; j++) {
 
