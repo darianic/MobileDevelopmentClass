@@ -26,7 +26,6 @@ int main() {
   char str[300];
 
   float bytes = 0;
-  int num = 0; //Number of words in a string
   char * hi;
 
   while (fgets(str,300,f1)) {
@@ -60,11 +59,11 @@ int main() {
 
             if (istr1 != NULL || istr2 != NULL) {
               if (istr3 != NULL) {
-                bytes = bytes + atof(m[11])*1048576;
+                bytes = bytes + atof(m[11])/i*1048576;
                 num = i;
               }
               else {
-                bytes = bytes + atoi(m[11]);
+                bytes = bytes + atoi(m[11])/i;
                 num = i;
               }
             }
@@ -91,7 +90,6 @@ int main() {
     fclose(f1);
     fprintf(f2,"e\n");
     fclose(f2);
-    bytes = bytes/num;
     printf("Всего байтов: %.0f\n", bytes);
     printf("\n");
 
