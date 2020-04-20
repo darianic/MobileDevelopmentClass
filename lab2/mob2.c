@@ -27,6 +27,7 @@ int main() {
 
   int bytes = 0;
   int num = 0; //Number of words in a string
+  char * hi;
 
   while (fgets(str,300,f1)) {
          //puts(str);
@@ -54,8 +55,14 @@ int main() {
             istr2 = strstr(value2,str);
 
             if (istr1 != NULL || istr2 != NULL) {
-              bytes = bytes + atoi(m[11]);
-              num = i;
+              if (m[12] == "M") {
+                bytes = bytes + atof(m[11])*1048576;
+                num = i;
+              }
+              else {
+                bytes = bytes + atoi(m[11]);
+                num = i;
+              }
             }
         }
 
@@ -71,14 +78,18 @@ int main() {
             t=strtok(NULL,":.");
           }
 
-          fprintf(f2,"%d%d %d\n", chisla[0], chisla[1], atoi(m[11]));
+          if (m[12] == "M")
+            fprintf(f2,"%d%d %f\n", chisla[0], chisla[1], atof(m[11])*1048576);
+
+          else
+            fprintf(f2,"%d%d %d\n", chisla[0], chisla[1], atoi(m[11]));
         }
   }
     fclose(f1);
     fprintf(f2,"e\n");
     fclose(f2);
     bytes = bytes/num;
-    printf("Всего байтов: %d", bytes);
+    printf("Всего байтов: %d\n", bytes);
     printf("\n");
 
     Internet(bytes);
