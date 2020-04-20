@@ -25,7 +25,7 @@ int main() {
 
   char str[300];
 
-  int bytes = 0;
+  float bytes = 0;
   int num = 0; //Number of words in a string
   char * hi;
 
@@ -48,14 +48,17 @@ int main() {
 
             char * value1 = m[5];
             char * value2 = m[7];
+            char * value3 = m[12];
 
             char * str = "17.248.150.51";
+            char * str1 = "M";
 
             istr1 = strstr(value1,str);
             istr2 = strstr(value2,str);
+            istr3 = strstr(value3,str1);
 
             if (istr1 != NULL || istr2 != NULL) {
-              if (m[12] == "M") {
+              if (istr3 != NULL) {
                 bytes = bytes + atof(m[11])*1048576;
                 num = i;
               }
@@ -78,7 +81,7 @@ int main() {
             t=strtok(NULL,":.");
           }
 
-          if (m[12] == "M")
+          if (istr3 != NULL)
             fprintf(f2,"%d%d %f\n", chisla[0], chisla[1], atof(m[11])*1048576);
 
           else
