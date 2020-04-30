@@ -5,4 +5,6 @@ before running code do in terminal:
 
 also import docx
 
+lab1/2 results are in .txt files
+
 sorry for code, i really tried
