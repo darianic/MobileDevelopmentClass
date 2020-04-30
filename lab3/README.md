@@ -5,4 +5,4 @@ before running code do in terminal:
 
 also import docx
 
-sorry for code, i tried
+sorry for code, i really tried
